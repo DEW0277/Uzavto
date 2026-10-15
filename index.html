@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UzAvto Motors | Rasmiy Sotuv va Onlayn Shartnoma Portali</title>
+  <meta name="description" content="UzAvto Motors rasmiy sotuv portali: Chevrolet Tahoe, Traverse, Malibu va Tracker modellarini onlayn tanlang, lizing hisoblang va shartnoma rasmiylashtiring.">
+  
+  <!-- Google Fonts: Saira Condensed (Display), Cormorant Garamond (Serif), JetBrains Mono (Monospace) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&family=Saira+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation (Transparent Overlaid Bar as per DESIGN.md) -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-left">
+      <button class="nav-link" id="menuOpenBtn" aria-label="Menyu">MENU</button>
+      <a href="#models" class="nav-link">MODELLAR</a>
+      <a href="#configurator" class="nav-link">KONFIGURATOR</a>
+    </div>
+
+    <a href="#" class="wordmark-center" aria-label="UzAvto Motors Bosh sahifa">
+      <span class="wordmark">UZAVTO MOTORS</span>
+    </a>
+
+    <div class="nav-right">
+      <a href="#dealers" class="nav-link">DILERLAR</a>
+      <a href="#booking" class="nav-link cart-indicator">
+        <span>SHARTNOMA</span>
+        <span class="cart-count">[ONLAYN]</span>
+      </a>
+      <button class="pill-toggle" id="audioToggleBtn" title="Atmosfera ovozi">
+        <span id="audioIcon">OVOZ: O'CHIQ</span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Mobil menyu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Fullscreen Menu Drawer -->
+  <div class="menu-drawer" id="menuDrawer">
+    <button class="drawer-close" id="menuCloseBtn">YOPISH ✕</button>
+    <ul class="drawer-links">
+      <li><a href="#hero" class="drawer-nav-item">BOSH SAHIFA</a></li>
+      <li><a href="#models" class="drawer-nav-item">PREMIER MODELLAR</a></li>
+      <li><a href="#configurator" class="drawer-nav-item">INTERAKTIV KONFIGURATOR</a></li>
+      <li><a href="#craftsmanship" class="drawer-nav-item">MUHANDISLIK & STANDART</a></li>
+      <li><a href="#booking" class="drawer-nav-item">ONLAYN SHARTNOMA OLISH</a></li>
+      <li><a href="#dealers" class="drawer-nav-item">DILERLIK TARMOG'I</a></li>
+      <li><a href="#newsroom" class="drawer-nav-item">MATBUOT MARKAZI</a></li>
+    </ul>
+    <div style="margin-top: 40px; border-top: 1px solid var(--color-hairline); padding-top: 20px;">
+      <p class="caption-mono">ALOQA MARKAZI: +998 (78) 140-55-40</p>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION (Full-bleed automotive photography & motion) -->
+    <section class="hero-photo-band" id="hero">
+      <div class="hero-media-wrapper">
+        <img src="assets/images/tahoe.jpg" alt="UzAvto Motors Chevrolet Tahoe High Country" class="hero-bg-img" id="heroBgMedia">
+        <div class="hero-media-overlay"></div>
+        <canvas id="hero-canvas"></canvas>
+      </div>
+
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+        <div class="hero-badge">
+          <span class="caption-mono-white">UZAVTO MOTORS PREMIER COLLECTION · 2026</span>
+        </div>
+        <h1 class="display-xl hero-title">
+          MUKAMMAL MUHANDISLIK VA PREMIER HASHAMAT
+        </h1>
+        <p class="body-serif-strong hero-tagline">
+          Eng yuqori standartlar asosida yaratilgan flagman avtomobillar. Quvvat, nufuz va zamonaviy texnologiyalarning uyg'unligi endi sizning ixtiyoringizda.
+        </p>
+        <div class="hero-actions">
+          <a href="#models" class="btn-primary" id="heroExploreBtn">MODELLARNI KO'RISH</a>
+          <a href="#booking" class="btn-primary" id="heroOrderBtn">ONLINE SHARTNOMA</a>
+        </div>
+      </div>
+
+      <!-- Hero Bottom Bar & Callout Card as specified in DESIGN.md -->
+      <div class="hero-bottom-bar" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+        <div class="hero-quick-specs">
+          <div class="quick-spec-item">
+            <div class="quick-spec-value">420 HP</div>
+            <div class="quick-spec-label">V8 ECOTEC3 QUVVATI</div>
+          </div>
+          <div class="quick-spec-item">
+            <div class="quick-spec-value">5.7 SEK</div>
+            <div class="quick-spec-label">0-100 KM/H TEZLANISH</div>
+          </div>
+          <div class="quick-spec-item">
+            <div class="quick-spec-value">10-SPEED</div>
+            <div class="quick-spec-label">GIDRAVLIK AVTOMAT</div>
+          </div>
+        </div>
+
+        <!-- Career / Concierge Callout Card (DESIGN.md) -->
+        <aside class="career-callout-card" aria-label="Shaxsiy konsyerj xizmati">
+          <img src="assets/images/interior.jpg" alt="UzAvto VIP Interior" class="callout-thumb">
+          <div class="callout-title">VIP SHAXSIY KONS'ERJ</div>
+          <div class="callout-text">
+            Individual xizmat ko'rsatish va shaxsiy test-drayv buyurtmasi uchun konsyerj xizmatiga ulaning.
+          </div>
+          <a href="#booking" class="callout-link">
+            BOG'LANISH VA TEST-DRAYV &rarr;
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP LINEUP (Modellar Qatori) -->
+    <section class="section" id="models">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <div class="section-eyebrow caption-mono">PREMIER SERIYA 2026</div>
+          <h2 class="display-lg section-title">FLAGMAN MODELLAR QATORI</h2>
+          <p class="section-desc body-serif">
+            Har bir detalida muhandislik aniqligi va murosasiz qulaylik aks etgan rasmiy avtomobillar bilan tanishing.
+          </p>
+        </div>
+
+        <div class="model-showcase-grid">
+
+          <!-- MODEL 1: CHEVROLET TAHOE HIGH COUNTRY -->
+          <article class="model-showcase-card" data-aos="fade-up">
+            <div class="model-media-box">
+              <span class="model-badge-tag caption-mono">PREMIUM FLAGSHIP</span>
+              <img src="assets/images/tahoe.jpg" alt="Chevrolet Tahoe High Country" class="model-photo" loading="lazy">
+            </div>
+            <div class="model-info-box">
+              <div class="model-family caption-mono">TO'LIQ O'LCHAMLI LUXURY SUV</div>
+              <h3 class="display-md model-name">CHEVROLET TAHOE HIGH COUNTRY</h3>
+              <p class="body-serif model-desc">
+                Kuch va qat'iyat timsoli. 6.2 litrli V8 dvigateli, MagneRide pnevmatik osmasi va premium charmdan ishlangan shohona interyer.
+              </p>
+
+              <div class="spec-grid">
+                <div class="spec-cell">
+                  <div class="spec-value">6.2L V8</div>
+                  <div class="spec-label">DVIGATEL</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">420 HP</div>
+                  <div class="spec-label">OT KUCHI</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">5.7 SEK</div>
+                  <div class="spec-label">0-100 KM/H</div>
+                </div>
+              </div>
+
+              <div class="model-pricing-row">
+                <div>
+                  <div class="caption-mono">BOSHLANG'ICH NARX</div>
+                  <div class="price-main">1,109,250,000 UZS</div>
+                </div>
+                <div class="price-sub">~$88,000 USD</div>
+              </div>
+
+              <div class="model-actions">
+                <button class="btn-primary" onclick="quickConfigure('Tahoe')">KONFIGURATSIYA</button>
+                <button class="btn-primary" onclick="openOrderModal('Tahoe High Country', '1,109,250,000 UZS')">ONLINE SHARTNOMA</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODEL 2: CHEVROLET TRAVERSE PREMIER -->
+          <article class="model-showcase-card reverse" data-aos="fade-up">
+            <div class="model-media-box">
+              <span class="model-badge-tag caption-mono">7-O'RINLI KROSSOVER</span>
+              <img src="assets/images/traverse.jpg" alt="Chevrolet Traverse Premier" class="model-photo" loading="lazy">
+            </div>
+            <div class="model-info-box">
+              <div class="model-family caption-mono">PREMIER AEROSPORT CROSSOVER</div>
+              <h3 class="display-md model-name">CHEVROLET TRAVERSE PREMIER</h3>
+              <p class="body-serif model-desc">
+                Oilaviy sayohatlar va shahar dinamikasi uchun tengsiz qulaylik. Intellektual to'liq uzatma (AWD) va 3.6L V6 agregati.
+              </p>
+
+              <div class="spec-grid">
+                <div class="spec-cell">
+                  <div class="spec-value">3.6L V6</div>
+                  <div class="spec-label">DVIGATEL</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">318 HP</div>
+                  <div class="spec-label">OT KUCHI</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">6.9 SEK</div>
+                  <div class="spec-label">0-100 KM/H</div>
+                </div>
+              </div>
+
+              <div class="model-pricing-row">
+                <div>
+                  <div class="caption-mono">BOSHLANG'ICH NARX</div>
+                  <div class="price-main">760,000,000 UZS</div>
+                </div>
+                <div class="price-sub">~$60,300 USD</div>
+              </div>
+
+              <div class="model-actions">
+                <button class="btn-primary" onclick="quickConfigure('Traverse')">KONFIGURATSIYA</button>
+                <button class="btn-primary" onclick="openOrderModal('Traverse Premier', '760,000,000 UZS')">ONLINE SHARTNOMA</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODEL 3: CHEVROLET MALIBU XL TURBO -->
+          <article class="model-showcase-card" data-aos="fade-up">
+            <div class="model-media-box">
+              <span class="model-badge-tag caption-mono">EXECUTIVE SPORT SEDAN</span>
+              <img src="assets/images/malibu.jpg" alt="Chevrolet Malibu XL Turbo" class="model-photo" loading="lazy">
+            </div>
+            <div class="model-info-box">
+              <div class="model-family caption-mono">BIZNES KLASS SPORT SEDAN</div>
+              <h3 class="display-md model-name">CHEVROLET MALIBU XL 2.0 TURBO</h3>
+              <p class="body-serif model-desc">
+                Aerodinamik siluet, yuqori darajadagi shovqinsiz saloni va 253 ot kuchiga ega turbo dvigatelining zavqi.
+              </p>
+
+              <div class="spec-grid">
+                <div class="spec-cell">
+                  <div class="spec-value">2.0L TURBO</div>
+                  <div class="spec-label">DVIGATEL</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">253 HP</div>
+                  <div class="spec-label">OT KUCHI</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">6.7 SEK</div>
+                  <div class="spec-label">0-100 KM/H</div>
+                </div>
+              </div>
+
+              <div class="model-pricing-row">
+                <div>
+                  <div class="caption-mono">BOSHLANG'ICH NARX</div>
+                  <div class="price-main">420,000,000 UZS</div>
+                </div>
+                <div class="price-sub">~$33,300 USD</div>
+              </div>
+
+              <div class="model-actions">
+                <button class="btn-primary" onclick="quickConfigure('Malibu')">KONFIGURATSIYA</button>
+                <button class="btn-primary" onclick="openOrderModal('Malibu XL Turbo', '420,000,000 UZS')">ONLINE SHARTNOMA</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODEL 4: CHEVROLET TRACKER REDLINE -->
+          <article class="model-showcase-card reverse" data-aos="fade-up">
+            <div class="model-media-box">
+              <span class="model-badge-tag caption-mono">COMPACT URBAN SUV</span>
+              <img src="assets/images/tracker.jpg" alt="Chevrolet Tracker Redline" class="model-photo" loading="lazy">
+            </div>
+            <div class="model-info-box">
+              <div class="model-family caption-mono">ZAMONAVIY SHAHAR KROSSOVERI</div>
+              <h3 class="display-md model-name">CHEVROLET TRACKER REDLINE</h3>
+              <p class="body-serif model-desc">
+                Yoshlarbop sport uslubi, panoramik tom lyuki, sensorli multimedia va tejamkor turbo motor uyg'unligi.
+              </p>
+
+              <div class="spec-grid">
+                <div class="spec-cell">
+                  <div class="spec-value">1.2L TURBO</div>
+                  <div class="spec-label">DVIGATEL</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">132 HP</div>
+                  <div class="spec-label">OT KUCHI</div>
+                </div>
+                <div class="spec-cell">
+                  <div class="spec-value">6.5 L</div>
+                  <div class="spec-label">SARF / 100 KM</div>
+                </div>
+              </div>
+
+              <div class="model-pricing-row">
+                <div>
+                  <div class="caption-mono">BOSHLANG'ICH NARX</div>
+                  <div class="price-main">245,000,000 UZS</div>
+                </div>
+                <div class="price-sub">~$19,400 USD</div>
+              </div>
+
+              <div class="model-actions">
+                <button class="btn-primary" onclick="quickConfigure('Tracker')">KONFIGURATSIYA</button>
+                <button class="btn-primary" onclick="openOrderModal('Tracker Redline', '245,000,000 UZS')">ONLINE SHARTNOMA</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CAR CONFIGURATOR & CREDIT/FINANCING CALCULATOR -->
+    <section class="section configurator-section" id="configurator">
+      <div class="container-wide">
+        <div class="section-header" data-aos="fade-up">
+          <div class="section-eyebrow caption-mono">INTERAKTIV ONLAYN TIZIM</div>
+          <h2 class="display-lg section-title">AVTOMOBIL KONFIGURATORI & LIZING KALKULYATORI</h2>
+          <p class="section-desc body-serif">
+            O'zingizga ma'qul avtomobil, rang va komplektatsiyani tanlang. Haqiqiy vaqt rejimida oylik to'lov va shartnoma shartlarini hisoblang.
+          </p>
+        </div>
+
+        <div class="configurator-wrapper">
+          <!-- Visualizer Viewport -->
+          <div class="config-stage" data-aos="fade-right">
+            <div class="config-visual-viewport">
+              <img src="assets/images/tahoe.jpg" alt="Selected Car Preview" class="config-visual-img" id="configCarImg">
+              <div class="config-lighting-layer" id="configSheen"></div>
+            </div>
+            <div class="config-car-caption">
+              <div>
+                <span class="caption-mono" id="configFamilyLabel">TO'LIQ O'LCHAMLI LUXURY SUV</span>
+                <h4 class="display-sm" id="configCarTitle">CHEVROLET TAHOE HIGH COUNTRY</h4>
+              </div>
+              <div style="text-align: right;">
+                <span class="caption-mono">TANLANGAN RANG</span>
+                <div class="caption-mono-white" id="configColorLabel">TUXEDO BLACK (QORA METALLIK)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls Panel -->
+          <div class="config-controls" data-aos="fade-left">
+            <!-- Step 1: Model Choice -->
+            <div class="config-step">
+              <div class="step-label">
+                <span>01 · AVTOMOBIL MODELI</span>
+                <span class="selected-value" id="selectedModelName">TAHOE</span>
+              </div>
+              <div class="model-picker-grid">
+                <button class="model-pick-btn active" data-model="Tahoe" onclick="selectModel('Tahoe')">
+                  TAHOE HIGH COUNTRY
+                </button>
+                <button class="model-pick-btn" data-model="Traverse" onclick="selectModel('Traverse')">
+                  TRAVERSE PREMIER
+                </button>
+                <button class="model-pick-btn" data-model="Malibu" onclick="selectModel('Malibu')">
+                  MALIBU XL TURBO
+                </button>
+                <button class="model-pick-btn" data-model="Tracker" onclick="selectModel('Tracker')">
+                  TRACKER REDLINE
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Exterior Color Palette -->
+            <div class="config-step">
+              <div class="step-label">
+                <span>02 · KUZOV RANGI</span>
+                <span class="selected-value" id="selectedColorName">TUXEDO BLACK</span>
+              </div>
+              <div class="color-swatches-grid">
+                <button class="swatch-btn active" data-color="Tuxedo Black" data-filter="none" title="Tuxedo Black" onclick="selectColor(this, 'Tuxedo Black', 'brightness(0.9) contrast(1.1)')">
+                  <span class="swatch-circle" style="background: #0a0a0a; border: 1px solid #333;"></span>
+                </button>
+                <button class="swatch-btn" data-color="Summit White" data-filter="contrast(1.1) brightness(1.2) grayscale(0.8)" title="Summit White" onclick="selectColor(this, 'Summit White', 'contrast(1.05) brightness(1.25) grayscale(0.7)')">
+                  <span class="swatch-circle" style="background: #e8e8e8;"></span>
+                </button>
+                <button class="swatch-btn" data-color="Satin Steel Gray" data-filter="contrast(1.1) brightness(1.05) hue-rotate(180deg)" title="Satin Steel Gray" onclick="selectColor(this, 'Satin Steel Gray', 'contrast(1.1) brightness(1.05) saturate(0.6)')">
+                  <span class="swatch-circle" style="background: #4a4f54;"></span>
+                </button>
+                <button class="swatch-btn" data-color="Midnight Navy" data-filter="hue-rotate(200deg) saturate(1.4)" title="Midnight Navy" onclick="selectColor(this, 'Midnight Navy', 'contrast(1.1) hue-rotate(205deg) saturate(1.3)')">
+                  <span class="swatch-circle" style="background: #111d2e;"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Trim Level -->
+            <div class="config-step">
+              <div class="step-label">
+                <span>03 · KOMPLEKTATSIYA VA PAKET</span>
+                <span class="selected-value" id="selectedTrimName">HIGH COUNTRY (PREMIER)</span>
+              </div>
+              <div class="trim-options-grid">
+                <button class="trim-btn active" data-trim="Premier" onclick="selectTrim(this, 'Premier', 0)">
+                  <span>STANDART PREMIER</span>
+                  <span>ASOSIY</span>
+                </button>
+                <button class="trim-btn" data-trim="HighCountry" onclick="selectTrim(this, 'High Country Pack', 45000000)">
+                  <span>HIGH COUNTRY EXECUTIVE (+45M UZS)</span>
+                  <span>+ PNEVMA & PANORAMA</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 4: Financing & Leasing Calculator -->
+            <div class="config-step">
+              <div class="step-label">
+                <span>04 · TO'LOV VA LIZING KALKULYATORI</span>
+                <span class="selected-value">IMTIYOZLI AVTOKREDIT</span>
+              </div>
+              <div class="finance-sliders">
+                <div class="slider-group">
+                  <div class="slider-header">
+                    <span>BOSHLANG'ICH TO'LOV</span>
+                    <span class="current-val" id="downPaymentPercentDisplay">30% (<span id="downPaymentSumDisplay">332,775,000 UZS</span>)</span>
+                  </div>
+                  <input type="range" id="downPaymentSlider" min="20" max="70" step="5" value="30">
+                </div>
+
+                <div class="slider-group">
+                  <div class="slider-header">
+                    <span>KREDIT MUDDATI</span>
+                    <span class="current-val" id="termMonthsDisplay">36 OY (3 YIL)</span>
+                  </div>
+                  <input type="range" id="termSlider" min="12" max="60" step="12" value="36">
+                </div>
+              </div>
+
+              <!-- Live Calculated Summary -->
+              <div class="calc-summary-card">
+                <div class="summary-row">
+                  <span class="summary-label">AVTOMOBIL JAMI NARXI</span>
+                  <span class="summary-value" id="calcTotalVehiclePrice">1,109,250,000 UZS</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">YILLIK FOIZ STAVKASI</span>
+                  <span class="summary-value" style="font-size: 16px; color: var(--color-link);">18% (HAMKOR BANKLAR)</span>
+                </div>
+                <div class="summary-row total">
+                  <span class="summary-label">TAXMINIY OYLIK TO'LOV</span>
+                  <span class="summary-value" id="calcMonthlyPayment" style="color: #ffffff;">28,450,000 UZS/OY</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+              <button class="btn-primary" style="width: 100%;" onclick="proceedFromConfigurator()">
+                USHBU KONFIGURATSIYA BILAN SHARTNOMA TUZISH &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFTSMANSHIP & ENGINEERING STANDARDS (Muhandislik va Standartlar) -->
+    <section class="section" id="craftsmanship">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <div class="section-eyebrow caption-mono">MUHANDISLIK FALSAFASI</div>
+          <h2 class="display-lg section-title">ENG YUQORI GLOBAL STANDARTLAR</h2>
+          <p class="section-desc body-serif">
+            UzAvto Motors ishlab chiqarish bazasida xalqaro General Motors sifat nazorati (GMS) va eng yangi robototexnika tizimlari qo'llaniladi.
+          </p>
+        </div>
+
+        <div class="specs-overview-grid" data-aos="fade-up" data-aos-delay="200">
+          <div class="spec-overview-card">
+            <div class="spec-overview-num">01</div>
+            <div class="spec-overview-title">ECOTEC3 VA TURBO TEXNOLOGIYA</div>
+            <div class="spec-overview-text">
+              Dinamik yonilg'i boshqaruvi (DFM) va to'g'ridan-to'g'ri purkash tizimi dvigatelning maksimal tejamkorligi va quvvatini ta'minlaydi.
+            </div>
+          </div>
+
+          <div class="spec-overview-card">
+            <div class="spec-overview-num">02</div>
+            <div class="spec-overview-title">MAGNERIDE FAOL OSMASI</div>
+            <div class="spec-overview-text">
+              Har soniyada 1000 marta yo'l qoplamasini skanerlovchi magnit-reologik pnevma tizimi mislsiz silliq harakat bag'ishlaydi.
+            </div>
+          </div>
+
+          <div class="spec-overview-card">
+            <div class="spec-overview-num">03</div>
+            <div class="spec-overview-title">10-AIRBAG & 360° INTELLIGENT EYE</div>
+            <div class="spec-overview-text">
+              To'liq xavfsizlik qalqoni: radar distansiya nazorati, piyodalarni taniy olish va avtomatik favqulodda tormozlash.
+            </div>
+          </div>
+
+          <div class="spec-overview-card">
+            <div class="spec-overview-num">04</div>
+            <div class="spec-overview-title">5 YIL / 150,000 KM KAFOLAT</div>
+            <div class="spec-overview-text">
+              Barcha rasmiy modellar uchun to'liq zavod kafolati va butun O'zbekiston bo'ylab 24/7 Roadside Assistance xizmati.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL BLEED EDITORIAL PHOTO BAND: INNOVATION & ELECTRIFICATION -->
+    <section class="editorial-photo-band" data-aos="fade">
+      <img src="assets/images/ev_concept.jpg" alt="UzAvto Future Electrification" class="editorial-bg" loading="lazy">
+      <div class="editorial-overlay"></div>
+      <div class="editorial-content" data-aos="fade-up">
+        <span class="caption-mono-white">KELAJAK TEXNOLOGIYASI</span>
+        <h2 class="display-lg" style="margin: 20px 0;">UZAVTO ELECTRIFICATION PLATFORMASI</h2>
+        <p class="body-serif" style="margin-bottom: 30px; font-size: 18px;">
+          Yangi avlod elektrotransport vositalari va gibrid quvvat qurilmalari bilan barqaror kelajak sari qadam qo'ying.
+        </p>
+        <a href="#models" class="btn-primary">KONTSEPT BILAN TANISHISH</a>
+      </div>
+    </section>
+
+    <!-- SALES CONTRACT & BOOKING FORM (Online Shartnoma Portali) -->
+    <section class="section booking-section" id="booking">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <div class="section-eyebrow caption-mono">RASMIY ELEKTRON TIZIM</div>
+          <h2 class="display-lg section-title">ONLAYN SHARTNOMA VA BUYURTMA</h2>
+          <p class="section-desc body-serif">
+            Navbatsiz va shaffof: o'zingizga qulay dilerlik markazini tanlang va bir necha daqiqada rasmiy sotuv shartnomasini shakllantiring.
+          </p>
+        </div>
+
+        <div class="booking-form-wrapper" data-aos="fade-up" data-aos-delay="200">
+          <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="fullName">TO'LIQ ISM-SHARIF (F.I.SH) *</label>
+                <input type="text" id="fullName" class="text-input" placeholder="Masalan: Alisher Qodirov" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phoneNumber">TELEFON RAQAM *</label>
+                <input type="tel" id="phoneNumber" class="text-input" placeholder="+998 (90) 123-45-67" required>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="passportId">PASPORT SERIYA VA RAQAMI / PINFL *</label>
+                <input type="text" id="passportId" class="text-input" placeholder="AA 1234567 yoki 14 xonali JSHSHIR" required>
+              </div>
+
+              <div class="form-group">
+                <label for="selectModelInput">AVTOMOBIL MODELI *</label>
+                <select id="selectModelInput" class="select-input" onchange="syncModelSelection(this.value)">
+                  <option value="Chevrolet Tahoe High Country">Chevrolet Tahoe High Country (1,109,250,000 UZS)</option>
+                  <option value="Chevrolet Traverse Premier">Chevrolet Traverse Premier (760,000,000 UZS)</option>
+                  <option value="Chevrolet Malibu XL Turbo">Chevrolet Malibu XL Turbo (420,000,000 UZS)</option>
+                  <option value="Chevrolet Tracker Redline">Chevrolet Tracker Redline (245,000,000 UZS)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="selectDealerInput">RASMIY DILERLIK MARKAZI *</label>
+                <select id="selectDealerInput" class="select-input">
+                  <option value="Toshkent - Driver's Village (Sergeli)">Toshkent - Driver's Village (Sergeli)</option>
+                  <option value="Toshkent - Rohat Avtosalon (Bektemir)">Toshkent - Rohat Avtosalon (Bektemir)</option>
+                  <option value="Toshkent - Nurafshon Avtomakoni">Toshkent - Nurafshon Avtomakoni</option>
+                  <option value="Samarqand - Samarqand Avto Markaz">Samarqand - Samarqand Avto Markaz</option>
+                  <option value="Farg'ona - Farg'ona GM Premier">Farg'ona - Farg'ona GM Premier</option>
+                  <option value="Buxoro - Buxoro Avtosavdo">Buxoro - Buxoro Avtosavdo</option>
+                  <option value="Andijon - Asaka Flagship Markazi">Andijon - Asaka Flagship Markazi</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="selectPaymentType">TO'LOV SHAKLI *</label>
+                <select id="selectPaymentType" class="select-input">
+                  <option value="100% To'liq To'lov">100% To'liq To'lov (Keshbek va tezkor yetkazish)</option>
+                  <option value="Imtiyozli Avtokredit">Imtiyozli Avtokredit (Hamkor banklar orqali)</option>
+                  <option value="Kompaniya Lizingi">Kompaniya Lizingi (Yuridik shaxslar uchun)</option>
+                  <option value="Bo'lib to'lash (0% aksiyadorlik)">Bo'lib to'lash (0% aksiyadorlik)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="terms-checkbox">
+              <input type="checkbox" id="termsCheck" required checked>
+              <label for="termsCheck">
+                UzAvto Motors rasmiy ommaviy ofertasi, sotuv shartnomasi qoidalari va shaxsiy ma'lumotlarni qayta ishlashga rozilik bildiraman.
+              </label>
+            </div>
+
+            <div style="text-align: center;">
+              <button type="submit" class="btn-primary" style="padding: 16px 48px;" id="submitOrderBtn">
+                ELEKTRON SHARTNOMA RASMIYLASHTIRISH &rarr;
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFICIAL SHOWROOMS & DEALERS NETWORK (Dilerlik Markazlari) -->
+    <section class="section" id="dealers">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <div class="section-eyebrow caption-mono">RASMIY DILERLAR</div>
+          <h2 class="display-lg section-title">RESPUBLIKA BO'YLAB DILERLIK TARMOG'I</h2>
+          <p class="section-desc body-serif">
+            O'zbekistonning barcha hududlaridagi zamonaviy avtosalonlarimizda test-drayvdan o'ting va avtomobilingizni qabul qiling.
+          </p>
+        </div>
+
+        <div class="dealers-tabs" data-aos="fade-up">
+          <button class="dealer-tab-btn active" onclick="filterDealers('all', this)">BARCHASI</button>
+          <button class="dealer-tab-btn" onclick="filterDealers('toshkent', this)">TOSHKENT</button>
+          <button class="dealer-tab-btn" onclick="filterDealers('samarqand', this)">SAMARQAND</button>
+          <button class="dealer-tab-btn" onclick="filterDealers('vodiy', this)">FARG'ONA & ANDIJON</button>
+          <button class="dealer-tab-btn" onclick="filterDealers('buxoro', this)">BUXORO</button>
+        </div>
+
+        <div class="dealers-grid" id="dealersGrid">
+          <div class="dealer-card" data-region="toshkent" data-aos="fade-up">
+            <div>
+              <div class="dealer-city">TOSHKENT SHAHRI</div>
+              <h3 class="dealer-name">DRIVER'S VILLAGE SERGELI</h3>
+              <p class="dealer-address">Sergeli tumani, Yangi Sergeli ko'chasi, 2-uy. Markaziy flagman salon.</p>
+            </div>
+            <div>
+              <div class="dealer-contact">TEL: +998 (71) 200-70-70</div>
+              <span class="caption-mono" style="margin-top: 8px; display: block;">ISH VAQTI: 09:00 - 20:00 (DAM OLISh KUNLARISIZ)</span>
+            </div>
+          </div>
+
+          <div class="dealer-card" data-region="toshkent" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <div class="dealer-city">TOSHKENT SHAHRI</div>
+              <h3 class="dealer-name">ROHAT AVTOSALON</h3>
+              <p class="dealer-address">Bektemir tumani, Rohat aylanma yo'li, 15-bino. Shartnoma markazi.</p>
+            </div>
+            <div>
+              <div class="dealer-contact">TEL: +998 (71) 203-33-33</div>
+              <span class="caption-mono" style="margin-top: 8px; display: block;">ISH VAQTI: 09:00 - 19:00</span>
+            </div>
+          </div>
+
+          <div class="dealer-card" data-region="samarqand" data-aos="fade-up" data-aos-delay="200">
+            <div>
+              <div class="dealer-city">SAMARQAND VILOYATI</div>
+              <h3 class="dealer-name">SAMARQAND AVTO MARKAZ</h3>
+              <p class="dealer-address">Samarqand shahri, Spitamen shoh ko'chasi, 145-uy.</p>
+            </div>
+            <div>
+              <div class="dealer-contact">TEL: +998 (66) 230-10-10</div>
+              <span class="caption-mono" style="margin-top: 8px; display: block;">ISH VAQTI: 09:00 - 19:00</span>
+            </div>
+          </div>
+
+          <div class="dealer-card" data-region="vodiy" data-aos="fade-up">
+            <div>
+              <div class="dealer-city">FARG'ONA VILOYATI</div>
+              <h3 class="dealer-name">FARG'ONA GM PREMIER</h3>
+              <p class="dealer-address">Farg'ona shahri, Al-Farg'oniy ko'chasi, 88-uy.</p>
+            </div>
+            <div>
+              <div class="dealer-contact">TEL: +998 (73) 244-50-50</div>
+              <span class="caption-mono" style="margin-top: 8px; display: block;">ISH VAQTI: 09:00 - 19:00</span>
+            </div>
+          </div>
+
+          <div class="dealer-card" data-region="vodiy" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <div class="dealer-city">ANDIJON VILOYATI</div>
+              <h3 class="dealer-name">ASAKA ZAVOD SHOWROOM</h3>
+              <p class="dealer-address">Asaka shahri, Humo ko'chasi, 1-uy. Ishlab chiqarish zavodi qoshidagi markaz.</p>
+            </div>
+            <div>
+              <div class="dealer-contact">TEL: +998 (74) 220-40-40</div>
+              <span class="caption-mono" style="margin-top: 8px; display: block;">ISH VAQTI: 09:00 - 18:00</span>
+            </div>
+          </div>
+
+          <div class="dealer-card" data-region="buxoro" data-aos="fade-up" data-aos-delay="200">
+            <div>
+              <div class="dealer-city">BUXORO VILOYATI</div>
+              <h3 class="dealer-name">BUXORO AVTOSAVDO</h3>
+              <p class="dealer-address">Buxoro shahri, G'ijduvon shoh ko'chasi, 62-uy.</p>
+            </div>
+            <div>
+              <div class="dealer-contact">TEL: +998 (65) 221-80-80</div>
+              <span class="caption-mono" style="margin-top: 8px; display: block;">ISH VAQTI: 09:00 - 19:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSROOM (2-up Article Grid matching DESIGN.md) -->
+    <section class="section" id="newsroom" style="border-top: 1px solid var(--color-hairline);">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <div class="section-eyebrow caption-mono">MATBUOT MARKAZI</div>
+          <h2 class="display-lg section-title">YANGILIKLAR VA HISOBOTLAR</h2>
+          <p class="section-desc body-serif">
+            UzAvto Motors kompaniyasining so'nggi muvaffaqiyatlari, eksport yangiliklari va sanoat e'lonlari.
+          </p>
+        </div>
+
+        <div class="newsroom-grid">
+          <article class="newsroom-card" data-aos="fade-up">
+            <img src="assets/images/interior.jpg" alt="UzAvto Yangi Lizing Dasturi" class="newsroom-thumb" loading="lazy">
+            <div class="newsroom-meta">
+              <span class="date-pill">12. MART 2026</span>
+              <span class="caption-mono" style="color: var(--color-link);">RASMIY XABAR</span>
+            </div>
+            <h3 class="newsroom-title">CHEVROLET TAHOE VA TRAVERSE MODELLARI UCHUN 0% YILLIK TO'LOV AKSIYASI E'LON QILINDI</h3>
+            <p class="newsroom-excerpt">
+              UzAvto Motors va yetakchi banklar hamkorligida boshlang'ich 50% to'lov amalga oshirilganda 24 oygacha foizsiz bo'lib to'lash dasturi ishga tushirildi.
+            </p>
+            <a href="#booking" class="text-link">Batafsil o'qish &rarr;</a>
+          </article>
+
+          <article class="newsroom-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="assets/images/wheel.jpg" alt="UzAvto Yangi Muhandislik Markazi" class="newsroom-thumb" loading="lazy">
+            <div class="newsroom-meta">
+              <span class="date-pill">08. FEVRAL 2026</span>
+              <span class="caption-mono" style="color: var(--color-link);">TEXNOLOGIYA</span>
+            </div>
+            <h3 class="newsroom-title">YANGI AVOD XAVFSIZLIK STANDARTLARI VA ELEKTRON PLATFORMA MAHALLIYLASHUVI</h3>
+            <p class="newsroom-excerpt">
+              Asaka zavodida ADAS (faol haydovchi yordamchilari) tizimlarini to'liq sinovdan o'tkazuvchi eng zamonaviy robotlashtirilgan laboratoriya faoliyat boshladi.
+            </p>
+            <a href="#craftsmanship" class="text-link">Batafsil o'qish &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRE-FOOTER CTA BAND WITH FULL-BLEED AUTOMOTIVE PHOTOGRAPHY -->
+    <section class="cta-band-photo" data-aos="fade">
+      <img src="assets/images/tahoe.jpg" alt="Discover UzAvto" class="cta-bg-img" loading="lazy">
+      <div class="hero-media-overlay"></div>
+      <div class="cta-content" data-aos="fade-up">
+        <span class="caption-mono-white">MUKAMMALIK VA NUFUZ</span>
+        <h2 class="display-lg cta-title">ORZUINGIZDAGI AVTOMOBIL SHARTNOMASINI HOZIROQ OLING</h2>
+        <a href="#booking" class="btn-primary" style="padding: 16px 44px;">ONLAYN BUYURTMA BERISH</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 4-COLUMN MONOCHROME FOOTER (DESIGN.md specification) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-col-title">UZAVTO MOTORS</div>
+          <ul class="footer-links">
+            <li><a href="#hero">Bosh sahifa</a></li>
+            <li><a href="#models">Premier Modellar</a></li>
+            <li><a href="#craftsmanship">Muhandislik va Sifat</a></li>
+            <li><a href="#newsroom">Matbuot Markazi</a></li>
+            <li><a href="#">Kompaniya Tarixi</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">MODELLAR QATORI</div>
+          <ul class="footer-links">
+            <li><a href="#models" onclick="quickConfigure('Tahoe')">Chevrolet Tahoe</a></li>
+            <li><a href="#models" onclick="quickConfigure('Traverse')">Chevrolet Traverse</a></li>
+            <li><a href="#models" onclick="quickConfigure('Malibu')">Chevrolet Malibu XL</a></li>
+            <li><a href="#models" onclick="quickConfigure('Tracker')">Chevrolet Tracker</a></li>
+            <li><a href="#craftsmanship">EV Concept Platformasi</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">SOTUV VA XIZMATLAR</div>
+          <ul class="footer-links">
+            <li><a href="#configurator">Interaktiv Konfigurator</a></li>
+            <li><a href="#booking">Onlayn Shartnoma Olish</a></li>
+            <li><a href="#dealers">Dilerlar va Showroomlar</a></li>
+            <li><a href="#">Kafolat va Servis (GMS)</a></li>
+            <li><a href="#">24/7 Texnik Ko'mak</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">HUQUQIY VA ALOQA</div>
+          <ul class="footer-links">
+            <li><a href="tel:+998781405540">+998 (78) 140-55-40</a></li>
+            <li><a href="mailto:info@uzavtosanoat.uz">info@uzavtosanoat.uz</a></li>
+            <li><a href="#">Ommaviy Oferta</a></li>
+            <li><a href="#">Maxfiylik Siyosati</a></li>
+            <li><a href="#">ISO 9001 Sifat Sertifikati</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-wordmark">UZAVTO MOTORS</div>
+        <div class="footer-legal">
+          <div>&copy; 2026 "UzAvto Motors" AJ. Barcha huquqlar qonun bilan himoyalangan.</div>
+          <div>Monomarkaziy hashamatli dizayn standarti (Bugatti Design System me'yorlari asosida).</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONTRACT MODAL POPUP -->
+  <div class="modal-overlay" id="orderSuccessModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeOrderModal()">✕</button>
+      <span class="caption-mono" style="color: var(--color-success);">SHARTNOMA MUVAFFAQIYATLI SHAKLLANTIRILDI</span>
+      <h3 class="display-sm" style="margin: 12px 0;">RASMIY ONLAYN BUYURTMA QABUL QILINDI</h3>
+      <p class="body-serif" style="font-size: 15px;">
+        Hurmatli <strong id="modalClientName">Alisher Qodirov</strong>! Sizning <strong id="modalVehicleName">Chevrolet Tahoe High Country</strong> avtomobili uchun rasmiy buyurtmangiz muvaffaqiyatli ro'yxatga olindi.
+      </p>
+
+      <div class="contract-voucher">
+        <div class="caption-mono">ELEKTRON SHARTNOMA RAQAMI:</div>
+        <div class="contract-code" id="modalContractCode">UZM-2026-89421-TH</div>
+        <div style="display: flex; justify-content: space-between; margin-top: 12px; font-size: 13px;">
+          <span class="caption-mono">DILER: <span id="modalDealerName" style="color: #fff;">Driver's Village</span></span>
+          <span class="caption-mono">HOLAT: <span style="color: var(--color-success);">FAOL</span></span>
+        </div>
+      </div>
+
+      <p class="body-serif" style="font-size: 14px; color: var(--color-muted); margin-bottom: 24px;">
+        Shartnoma nusxasi va to'lov rekvizitlari ko'rsatilgan SMS-xabar telefoningizga jo'natildi. 7 ish kuni davomida dilerlik markaziga tashrif buyurib yoki to'lovni bank ilovalari orqali amalga oshirishingiz mumkin.
+      </p>
+
+      <div style="display: flex; gap: 12px;">
+        <button class="btn-primary" style="flex: 1;" onclick="printContractSimulation()">SHARTNOMANI CHOP ETISH / PDF</button>
+        <button class="btn-primary" onclick="closeOrderModal()">YOPISH</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toastNotice">Xabar</div>
+
+  <!-- External Animation Libraries: Motion & AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
